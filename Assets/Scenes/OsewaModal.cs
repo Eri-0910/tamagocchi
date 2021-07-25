@@ -108,6 +108,7 @@ public class OsewaModal : MonoBehaviour
                     break;
             }
 
+        MainSetting.nextAction = this.categoryStr;
         SceneManager.LoadScene("SampleScene");
         Destroy(this.gameObject);
     }

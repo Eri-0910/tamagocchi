@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -26,13 +28,14 @@ public class OsewaItems
     }
 }
 
+[Serializable]
 public class OsewaItem
 {
     public string category;
     public string title;
     public string memo;
     public int needTime;
-    public List<DateTime> checkedTimes;
+    public List<string> checkedTimes;
     public Span span;
     public string done;
 
@@ -42,7 +45,8 @@ public class OsewaItem
         this.title = title;
         this.memo = memo;
         this.needTime = needTime;
-        this.checkedTimes = checkedTimes;
+        this.checkedTimes = checkedTimes.Select<DateTime,string>((DateTime checkedTime) => checkedTime.ToString("M/d/yyyy h:m:s tt")).ToList();
+        this.span = span;
     }
 
     public int getDone()
@@ -53,14 +57,14 @@ public class OsewaItem
         return times;
     }
 
-    private static bool IsNeedless(DateTime d)
+    private static bool IsNeedless(string d)
     {
-        return d.Date < DateTime.Today.AddDays(-2).Date;
+        return DateTime.ParseExact(d, "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date < DateTime.Today.AddDays(-2).Date;
     }
 
-    private static bool IsThisTimeDone(DateTime d)
+    private static bool IsThisTimeDone(string d)
     {
-        return  DateTime.Today.Date == d.Date;
+        return  DateTime.Today.Date == DateTime.ParseExact(d, "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
     }
 }
 

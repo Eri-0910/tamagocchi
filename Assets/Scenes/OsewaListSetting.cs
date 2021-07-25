@@ -15,65 +15,65 @@ public class OsewaListSetting : MonoBehaviour
     // リストをセットする場所
     [SerializeField] private GameObject listparent = default;
 
-
-    //JSON作成
-    // static string json = "{\"eat\": \[{\"title\":\"ごはんを食べる\", \"memo\":\"ごはんを食べる\", \"time\":\"ごはんを食べる\", \"span\":\"ごはんを食べる\" ,\"done\":\"ごはんを食べる\"}\], \"clean\": [{\"title\":\"部屋を片付ける\", \"memo\":\"ごはんを食べる\", \"time\":\"ごはんを食べる\", \"span\":\"ごはんを食べる\" ,\"done\":\"ごはんを食べる\"}]}";
-    //JsonUtilityを使ってJSONからJsonClass作成
-    // OsewaItems osewaItems = JsonUtility.FromJson<OsewaItems>(json);
-    OsewaItems osewaItems = new OsewaItems(
-        new OsewaItem[] {
-            new OsewaItem("eat", "朝ごはんを食べる", "", 1, Span.Day, new List<DateTime>()  {
-                new DateTime(2021, 7, 21, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)}),
-            new OsewaItem("eat", "昼ごはんを食べる", "大学の食堂で食べる", 1, Span.Day,  new List<DateTime>()  {
-                new DateTime(2021, 7, 24, 12, 47, 0),
-                new DateTime(2021, 7, 25, 12, 47, 0)}),
-            new OsewaItem("eat", "夜ごはんを食べる", "なるべく自炊！", 1, Span.Day,  new List<DateTime>()  {
-                new DateTime(2021, 7, 24, 17, 47, 0)}),
-            new OsewaItem("eat", "おやつを食べる", "週に２回まで。", 2, Span.Week,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("bath", "お風呂に入る", "", 1, Span.Day,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("clean", "部屋を片付ける", "a", 3, Span.Week,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)}),
-            new OsewaItem("clean", "キッチンを片付ける", "a", 1, Span.Week, new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)}),
-            new OsewaItem("clean", "お風呂場を片付ける", "a", 1, Span.Week,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("wash", "洗濯する", "a", 1, Span.Day,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)}),
-            new OsewaItem("wash",  "服を畳む", "a", 1, Span.Day,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("exercise", "筋トレ", "a", 4, Span.Week,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)}),
-            new OsewaItem("exercise", "ランニング", "a", 2, Span.Week,  new List<DateTime>()  {
-                new DateTime(2021, 7, 25, 7, 47, 0),
-                new DateTime(2021, 7, 25, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("study", "TOEIC対策", "a", 5, Span.Month,  new List<DateTime>()  {
-                new DateTime(2021, 7, 16, 7, 47, 0)})},
-        new OsewaItem[] {
-            new OsewaItem("play", "アニメをみる", "a", 3, Span.Month,  new List<DateTime>()  {
-                new DateTime(2021, 6, 28, 7, 47, 0),
-                new DateTime(2021, 7, 10, 7, 47, 0)})}
-    );
+    // [SerializeField] OsewaItems osewaItemsBase = new OsewaItems(
+    //     new OsewaItem[] {
+    //         new OsewaItem("eat", "朝ごはんを食べる", "", 1, Span.Day, new List<DateTime>()  {
+    //             new DateTime(2021, 7, 21, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //         new OsewaItem("eat", "昼ごはんを食べる", "大学の食堂で食べる", 1, Span.Day,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 24, 12, 47, 0),
+    //             new DateTime(2021, 7, 25, 12, 47, 0)}),
+    //         new OsewaItem("eat", "夜ごはんを食べる", "なるべく自炊！", 1, Span.Day,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 24, 17, 47, 0)}),
+    //         new OsewaItem("eat", "おやつを食べる", "週に２回まで。", 2, Span.Week,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("bath", "お風呂に入る", "", 1, Span.Day,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("clean", "部屋を片付ける", "a", 3, Span.Week,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //         new OsewaItem("clean", "キッチンを片付ける", "a", 1, Span.Week, new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //         new OsewaItem("clean", "お風呂場を片付ける", "a", 1, Span.Week,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("wash", "洗濯する", "a", 1, Span.Day,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //         new OsewaItem("wash",  "服を畳む", "a", 1, Span.Day,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("exercise", "筋トレ", "a", 4, Span.Week,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //         new OsewaItem("exercise", "ランニング", "a", 2, Span.Week,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 25, 7, 47, 0),
+    //             new DateTime(2021, 7, 25, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("study", "TOEIC対策", "a", 5, Span.Month,  new List<DateTime>()  {
+    //             new DateTime(2021, 7, 16, 7, 47, 0)})},
+    //     new OsewaItem[] {
+    //         new OsewaItem("play", "アニメをみる", "a", 3, Span.Month,  new List<DateTime>()  {
+    //             new DateTime(2021, 6, 28, 7, 47, 0),
+    //             new DateTime(2021, 7, 10, 7, 47, 0)})}
+    // );
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(JsonUtility.ToJson(osewaItems));
+        // PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItemsBase));
+        // Debug.Log(JsonUtility.ToJson(osewaItemsBase));
+        //JsonUtilityを使ってJSONからOsewaItems作成
+        var json = PlayerPrefs.GetString("Osewa");
+        OsewaItems osewaItems = JsonUtility.FromJson<OsewaItems>(json);
+
         SetTodoButton("eat", osewaItems.eat);
         SetTodoButton("bath", osewaItems.bath);
         SetTodoButton("clean", osewaItems.clean);

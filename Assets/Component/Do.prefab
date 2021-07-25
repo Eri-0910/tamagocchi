@@ -113,7 +113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 139.62347, y: 8.6516}
+  m_AnchoredPosition: {x: 128, y: 8.6516}
   m_SizeDelta: {x: 46.5464, y: 39.1263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3505971747416203745
@@ -267,8 +267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185.7, y: 8.6516}
-  m_SizeDelta: {x: 27.2752, y: 34.9473}
+  m_AnchoredPosition: {x: 183, y: 8.6516}
+  m_SizeDelta: {x: 52.6787, y: 34.9473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &283259360558154887
 CanvasRenderer:
@@ -463,7 +463,7 @@ MonoBehaviour:
   title: {fileID: 6850443463810210685}
   memo: {fileID: 4286908633135172904}
   times: {fileID: 4596362463268717986}
-  span: {fileID: 7319794103581647699}
+  spanImage: {fileID: 7319794103581647699}
   check: {fileID: 4736053496743343180}
   baseImage: {fileID: 6850443463743322799}
 --- !u!1 &6850443463810210687

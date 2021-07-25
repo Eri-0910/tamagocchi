@@ -16,7 +16,7 @@ public class OsewaButton : MonoBehaviour
     // ボタンの実行回数
     [SerializeField] private Text times = default;
     // ボタンのスパン
-    [SerializeField] private Image span = default;
+    [SerializeField] private Image spanImage = default;
     // ボタンのチェックマーク
     [SerializeField] private Image check = default;
     // ボタンのベースデザイン
@@ -39,23 +39,25 @@ public class OsewaButton : MonoBehaviour
         }
         check.enabled = osewaItem.getDone() >= osewaItem.needTime;
 
-        // switch (osewaItem.span)
-        // {
-        //     case Span.Day:
-        //         var sprite = Resources.Load<Sprite>("TaskItems/completed_task");
-        //         span.sprite = sprite;
-        //         break;
-        //     case Span.Week:
-        //         var sprite = Resources.Load<Sprite>("TaskItems/completed_task");
-        //         span.sprite = sprite;
-        //         break;
-        //     case Span.Month:
-        //         var sprite = Resources.Load<Sprite>("TaskItems/completed_task");
-        //         span.sprite = sprite;
-        //         break;
-        //     default:
-        //         break;
-        // }
+        var status = osewaItem.getDone() >= osewaItem.needTime ? "working" : "completed";
+        switch (osewaItem.span)
+            {
+                case Span.Day:
+                    var spanSpriteDay = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_day_label");
+                    spanImage.sprite = spanSpriteDay;
+                    break;
+                case Span.Week:
+                    var spanSpriteWeek = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_week_label");
+                    spanImage.sprite = spanSpriteWeek;
+                    break;
+                case Span.Month:
+                    var spanSpriteMonth = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_month_label");
+                    spanImage.sprite = spanSpriteMonth;
+                    break;
+                default:
+                    Debug.Log(osewaItem.span);
+                    break;
+            }
     }
 
     // ボタンを押した後のアクション

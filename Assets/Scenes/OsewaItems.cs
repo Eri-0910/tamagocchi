@@ -8,29 +8,30 @@ using UnityEngine;
 [Serializable]
 public class OsewaItems
 {
-    public OsewaItem[] eat;
-    public OsewaItem[] bath;
-    public OsewaItem[] clean;
-    public OsewaItem[] wash;
-    public OsewaItem[] exercise;
-    public OsewaItem[] study;
-    public OsewaItem[] play;
+    public List<OsewaItem> eat;
+    public List<OsewaItem> bath;
+    public List<OsewaItem> clean;
+    public List<OsewaItem> wash;
+    public List<OsewaItem> exercise;
+    public List<OsewaItem> study;
+    public List<OsewaItem> play;
 
-    public OsewaItems(OsewaItem[] eat, OsewaItem[] bath, OsewaItem[] clean, OsewaItem[] wash,OsewaItem[] exercise, OsewaItem[] study, OsewaItem[] play)
+    public OsewaItems(List<OsewaItem> eat, List<OsewaItem> bath, List<OsewaItem> clean, List<OsewaItem> wash, List<OsewaItem> exercise, List<OsewaItem> study, List<OsewaItem> play)
     {
-        this.eat = eat;
-        this.bath = bath;
-        this.clean = clean;
-        this.wash = wash;
-        this.exercise = exercise;
-        this.study = study;
-        this.play = play;
+        this.eat = eat.ToList();
+        this.bath = bath.ToList();
+        this.clean = clean.ToList();
+        this.wash = wash.ToList();
+        this.exercise = exercise.ToList();
+        this.study = study.ToList();
+        this.play = play.ToList();
     }
 }
 
 [Serializable]
 public class OsewaItem
 {
+    public int id;
     public string category;
     public string title;
     public string memo;
@@ -39,8 +40,9 @@ public class OsewaItem
     public Span span;
     public string done;
 
-    public OsewaItem(string category, string title, string memo, int needTime, Span span, List<DateTime> checkedTimes)
+    public OsewaItem(int id, string category, string title, string memo, int needTime, Span span, List<DateTime> checkedTimes)
     {
+        this.id = id;
         this.category = category;
         this.title = title;
         this.memo = memo;

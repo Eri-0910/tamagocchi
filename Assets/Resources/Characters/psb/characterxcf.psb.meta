@@ -318,7 +318,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 256
       y: 4
       width: 244
       height: 278
@@ -644,7 +644,7 @@ ScriptedImporter:
     - {x: 0, y: 26}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -31, y: -11}
+    uvTransform: {x: 221, y: -11}
   - name: hand_and_leg00.png #3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1317,7 +1317,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 256
-      y: 4
+      y: 290
       width: 49
       height: 50
     spriteID: 2e43527100ee84de6b1ba2e405f17445
@@ -1650,7 +1650,7 @@ ScriptedImporter:
     - {x: 0, y: 24}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 241, y: -105}
+    uvTransform: {x: 241, y: 181}
   - name: hand_and_leg00.png
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3819,6 +3819,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -84, y: 116}
+  - name: ctocat.png
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 244
+      height: 278
+    spriteID: cf47a871715aa4a2baaa44221f64476c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -31, y: -12}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
@@ -3878,13 +3900,20 @@ ScriptedImporter:
     spriteID: 900a51123317c44eea1a9b603739875d
     layerID: 1164184494
     mosaicPosition: {x: 4, y: 343}
+  - name: ctocat.png
+    spriteName: ctocat.png
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cf47a871715aa4a2baaa44221f64476c
+    layerID: 862788413
+    mosaicPosition: {x: 4, y: 4}
   - name: body00.png
     spriteName: body00.png
     isGroup: 0
     parentIndex: -1
     spriteID: 3919774a33fe945ffb562c9aaf117624
     layerID: -1349644073
-    mosaicPosition: {x: 4, y: 4}
+    mosaicPosition: {x: 256, y: 4}
   - name: hand_and_leg00.png #3
     spriteName: hand_and_leg00.png #3
     isGroup: 0
@@ -3905,7 +3934,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 2e43527100ee84de6b1ba2e405f17445
     layerID: 2016119867
-    mosaicPosition: {x: 256, y: 4}
+    mosaicPosition: {x: 256, y: 290}
   - name: hand_and_leg00.png
     spriteName: hand_and_leg00.png
     isGroup: 0

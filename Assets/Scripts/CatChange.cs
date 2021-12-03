@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Experimental.U2D.Animation;
 
 public class CatChange : MonoBehaviour
 {
@@ -9,15 +9,25 @@ public class CatChange : MonoBehaviour
     // 表示非表示を切り替える
     public SpriteRenderer leftHand;
     public SpriteRenderer rightHand;
-    public SpriteRenderer body;
     public SpriteRenderer face;
-    public SpriteRenderer ctoBody;
+    public SpriteResolver bodyResolver;
 
     public void change()
     {
-        leftHand.enabled = !leftHand.enabled;
-        rightHand.enabled = !rightHand.enabled;
-        body.enabled = !body.enabled;
-        ctoBody.enabled = !ctoBody.enabled;
+        switch (bodyResolver.GetLabel())
+        {
+            case "ctocat":
+                bodyResolver.SetCategoryAndLabel("Body", "nomal");
+                leftHand.enabled = true;
+                rightHand.enabled = true;
+                face.enabled = true;
+                break;
+            default:
+                bodyResolver.SetCategoryAndLabel("Body", "ctocat");
+                leftHand.enabled = false;
+                rightHand.enabled = false;
+                face.enabled = false;
+                break;
+        }
     }
 }

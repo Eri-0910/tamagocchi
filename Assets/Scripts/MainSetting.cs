@@ -57,6 +57,7 @@ public class MainSetting : MonoBehaviour
         }
 
         ChangeAnimation(nextAction);
+        SetCharactorType();
 
         nextAction = "";
     }
@@ -64,7 +65,19 @@ public class MainSetting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void SetCharactorType()
+    {
+        var charactorType = PlayerPrefs.GetString("CharactorType");
+
+        Debug.Log(charactorType);
+
+        if (charactorType != "normal")
+        {
+            GameObject.Find("switchcatbutton").GetComponent<CatChange>().change();
+        }
     }
 
     public void RandomCommentSetting(string[] messages)

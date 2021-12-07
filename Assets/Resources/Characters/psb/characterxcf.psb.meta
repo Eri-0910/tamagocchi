@@ -4167,19 +4167,19 @@ ScriptedImporter:
     categories:
     - name: Face
       labels:
-      - name: nomal
+      - name: normal
         spriteId: 900a51123317c44eea1a9b603739875d
       - name: eat
         spriteId: 16ac320f679374fb8aa5c2bbff4ce389
     - name: Hand
       labels:
-      - name: nomal
+      - name: normal
         spriteId: cb4d61132268e404fa976583d6017a0b
       - name: eat
         spriteId: c7dc33ce087d94ba8b4a375d14b75770
     - name: Body
       labels:
-      - name: nomal
+      - name: normal
         spriteId: 3919774a33fe945ffb562c9aaf117624
       - name: ctocat
         spriteId: cf47a871715aa4a2baaa44221f64476c

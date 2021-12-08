@@ -52,6 +52,26 @@ public class OsewaItem
         this.span = span;
     }
 
+    public boolean IsClear()
+    {
+        return getDoneTimes() >= this.needTime;
+    }
+
+    public boolean IsClearBefore()
+    {
+        return getDoneBeforeTimes() >= this.needTime;
+    }
+
+    public boolean IsOver()
+    {
+        return getDoneTimes() > this.needTime;
+    }
+
+    public boolean IsOverBefore()
+    {
+        return getDoneBeforeTimes() > this.needTime;
+    }
+
     /// <summary>
     /// 期間内にお世話を行った回数をチェックする
     /// </summary>

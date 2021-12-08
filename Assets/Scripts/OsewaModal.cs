@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static SceneNames;
+using static Utils;
 
 public class OsewaModal : MonoBehaviour
 {
@@ -71,37 +72,37 @@ public class OsewaModal : MonoBehaviour
             {
                 case "eat":
                     var eatIndex = osewaItems.eat.FindIndex(checkSame);
-                    osewaItems.eat[eatIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.eat[eatIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "bath":
                     var bathIndex = osewaItems.bath.FindIndex(checkSame);
-                    osewaItems.bath[bathIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.bath[bathIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "clean":
                     var cleanIndex = osewaItems.clean.FindIndex(checkSame);
-                    osewaItems.clean[cleanIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.clean[cleanIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "wash":
                     var washIndex = osewaItems.wash.FindIndex(checkSame);
-                    osewaItems.wash[washIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.wash[washIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "exercise":
                     var exerciseIndex = osewaItems.exercise.FindIndex(checkSame);
-                    osewaItems.exercise[exerciseIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.exercise[exerciseIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "study":
                     var studyIndex = osewaItems.study.FindIndex(checkSame);
-                    osewaItems.study[studyIndex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.study[studyIndex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 case "play":
                     var playindex = osewaItems.play.FindIndex(checkSame);
-                    osewaItems.play[playindex].checkedTimes.Add(DateTime.Now.ToString("M/d/yyyy h:m:s tt"));
+                    osewaItems.play[playindex].checkedTimes.Add(DateTimeToString(DateTime.Now));
                     PlayerPrefs.SetString("Osewa", JsonUtility.ToJson(osewaItems));
                     break;
                 default:

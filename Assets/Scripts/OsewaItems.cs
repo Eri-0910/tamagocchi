@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using UnityEngine;
+using static Utils;
 
 [Serializable]
 public class OsewaItems
@@ -47,7 +48,7 @@ public class OsewaItem
         this.title = title;
         this.memo = memo;
         this.needTime = needTime;
-        this.checkedTimes = checkedTimes.Select<DateTime,string>((DateTime checkedTime) => checkedTime.ToString("M/d/yyyy h:m:s tt")).ToList();
+        this.checkedTimes = checkedTimes.Select<DateTime,string>((DateTime checkedTime) => Utils.DateTimeToString(checkedTime)).ToList();
         this.span = span;
     }
 
@@ -61,12 +62,12 @@ public class OsewaItem
 
     private static bool IsNeedless(string d)
     {
-        return DateTime.ParseExact(d, "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date < DateTime.Today.AddDays(-2).Date;
+        return Utils.StringToDateTime(d) < DateTime.Today.AddDays(-2).Date;
     }
 
     private static bool IsThisTimeDone(string d)
     {
-        return  DateTime.Today.Date == DateTime.ParseExact(d, "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
+        return  DateTime.Today.Date == Utils.StringToDateTime(d);
     }
 }
 

@@ -33,34 +33,40 @@ public class OsewaButton : MonoBehaviour
         this.memo.text = osewaItem.memo;
         this.times.text = osewaItem.getDone() + "/" + osewaItem.needTime.ToString();
 
+        // やった回数が必要回数以上なら、背景を完了用に変える
         if(osewaItem.getDone() >= osewaItem.needTime){
             var sprite = Resources.Load<Sprite>("TaskItems/completed_task");
             baseImage.sprite = sprite;
         }
+        // やった回数が必要回数以上なら、チェックマークをつける
         check.enabled = osewaItem.getDone() >= osewaItem.needTime;
 
         var status = osewaItem.getDone() >= osewaItem.needTime ? "working" : "completed";
-        switch (osewaItem.span)
-            {
-                case Span.Day:
-                    var spanSpriteDay = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_day_label");
-                    spanImage.sprite = spanSpriteDay;
-                    break;
-                case Span.Week:
-                    var spanSpriteWeek = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_week_label");
-                    spanImage.sprite = spanSpriteWeek;
-                    break;
-                case Span.Month:
-                    var spanSpriteMonth = Resources.Load<Sprite>("TaskItems/Labels/" + status + "_month_label");
-                    spanImage.sprite = spanSpriteMonth;
-                    break;
-                default:
-                    Debug.Log(osewaItem.span);
-                    break;
-            }
+        var spanSprite = Resources.Load<Sprite>(getSpanImagePath(status, osewaItem.span));
+        spanImage.sprite = spanSprite;
     }
 
-    // ボタンを押した後のアクション
+    /// <summary>
+    /// 期間の画像パスを取得
+    /// </summary>
+    string getSpanImagePath(string status, Span span){
+        switch (span)
+        {
+            case Span.Day:
+                return "TaskItems/Labels/" + status + "_day_label";
+            case Span.Week:
+                return "TaskItems/Labels/" + status + "_week_label";
+            case Span.Month:
+                return "TaskItems/Labels/" + status + "_month_label";
+            default:
+                Debug.Log("span " + osewaItem.span + " is illegal.");
+                return "TaskItems/Labels/" + status + "_day_label";
+        }
+    }
+
+    /// <summary>
+    /// 各アイテムのモーダルを表示
+    /// </summary>
     public void ShowModal()
     {
         // 生成してCanvasの子要素に設定

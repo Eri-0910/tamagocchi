@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Experimental.U2D.Animation;
+using static Utils;
 
 public class MainSetting : MonoBehaviour
 {
@@ -64,7 +64,7 @@ public class MainSetting : MonoBehaviour
     void SetAge()
     {
         // 生まれた日を取得
-        DateTime birthDay =  DateTime.ParseExact(PlayerPrefs.GetString("BirthDay"), "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
+        DateTime birthDay = Utils.StringToDateTime(PlayerPrefs.GetString("BirthDay"));
         // 今日の日付
         DateTime today = DateTime.Today.Date;
 

@@ -63,12 +63,21 @@ public class MainSetting : MonoBehaviour
     /// </summary>
     void SetAge()
     {
+        // 生まれた日を取得
         DateTime birthDay =  DateTime.ParseExact(PlayerPrefs.GetString("BirthDay"), "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
+        // 今日の日付
         DateTime today = DateTime.Today.Date;
 
+        // 何日あるか
         TimeSpan liveDate = today - birthDay;
 
-        age.text = Math.Floor(liveDate.Days/3.0).ToString() + "歳";
+        // 3日で１歳なので、3で割って最大の整数を年齢とする
+        age.text = AgeToAgeText(Math.Floor(liveDate.Days/3.0));
+    }
+
+    string AgeToAgeText(int age)
+    {
+        return age.ToString() + "歳";
     }
 
     /// <summary>
@@ -77,7 +86,12 @@ public class MainSetting : MonoBehaviour
     void SetGeneration()
     {
         int generation = PlayerPrefs.GetInt("Generation", 1);
-        generationTextArea.text = "第" + generation.ToString() + "世代";
+        generationTextArea.text = GenerationToGenerationText(generation);
+    }
+
+    string GenerationToGenerationText(int generation)
+    {
+        return "第" + generation.ToString() + "世代";
     }
 
     /// <summary>

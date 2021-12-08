@@ -34,54 +34,22 @@ public class MainSetting : MonoBehaviour
     void Start()
     {
         // 年齢
-        DateTime birthDay =  DateTime.ParseExact(PlayerPrefs.GetString("BirthDay"), "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
-        DateTime today = DateTime.Today.Date;
-
-        TimeSpan liveDate = today - birthDay;
-
-        age.text = Math.Floor(liveDate.Days/3.0).ToString() + "歳";
+        SetAge();
 
         // 世代
-        int generation = PlayerPrefs.GetInt("Generation", 1);
-        Debug.Log(PlayerPrefs.GetInt("Generation"));
-        generationTextArea.text = "第" + generation.ToString() + "世代";
+        SetGeneration();
 
-        // アクション
-        Debug.Log(nextAction);
-        switch (nextAction)
-        {
-            case "eat":
-                RandomCommentSetting(EATMESSAGES);
-                break;
-            case "bath":
-                RandomCommentSetting(BATHMESSAGES);
-                break;
-            case "clean":
-                RandomCommentSetting(CLEANMESSAGES);
-                break;
-            case "wash":
-                RandomCommentSetting(WASHMESSAGES);
-                break;
-            case "exercise":
-                RandomCommentSetting(EXERCISEMESSAGES);
-                break;
-            case "study":
-                RandomCommentSetting(STUDYMESSAGES);
-                break;
-            case "play":
-                RandomCommentSetting(PLAYMESSAGES);
-                break;
-            default:
-                RandomCommentSetting(NOMALMESSAGES);
-                break;
-        }
-
+        // アクションによる変化
+        // コメントのセット
+        SetComment(nextAction);
+        // アニメーションのセット
         ChangeAnimation(nextAction);
+        // アニメーションリセット
+        nextAction = "";
 
         // ctoに変化するなどのキャラ変設定
         SetCharactorType();
 
-        nextAction = "";
     }
 
     // Update is called once per frame
@@ -90,11 +58,34 @@ public class MainSetting : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 年齢のセット
+    /// </summary>
+    void SetAge()
+    {
+        DateTime birthDay =  DateTime.ParseExact(PlayerPrefs.GetString("BirthDay"), "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
+        DateTime today = DateTime.Today.Date;
+
+        TimeSpan liveDate = today - birthDay;
+
+        age.text = Math.Floor(liveDate.Days/3.0).ToString() + "歳";
+    }
+
+    /// <summary>
+    /// 世代のセット
+    /// </summary>
+    void SetGeneration()
+    {
+        int generation = PlayerPrefs.GetInt("Generation", 1);
+        generationTextArea.text = "第" + generation.ToString() + "世代";
+    }
+
+    /// <summary>
+    /// ネコの変身をさせていた場合、その状態にセットする
+    /// </summary>
     void SetCharactorType()
     {
         var charactorType = PlayerPrefs.GetString("CharactorType");
-
-        Debug.Log(charactorType);
 
         if (charactorType != "normal")
         {
@@ -102,28 +93,58 @@ public class MainSetting : MonoBehaviour
         }
     }
 
-    public void RandomCommentSetting(string[] messages)
+    /// <summary>
+    /// 直前のアクションをもとに、ランダムにコメントをセットする
+    /// </summary>
+    /// <param name="nextAction">次のアクション</param>
+    void SetComment(string nextAction)
     {
-        //ランダムなコメントセット
-        string comment = messages.GetValue(UnityEngine.Random.Range(0, messages.Length)) as string;
-        text.text = comment;
+        string[] messages = GetActionComment(nextAction);
+        string selectedMessage = messages.GetValue(UnityEngine.Random.Range(0, messages.Length)) as string;
+        text.text = selectedMessage;
     }
 
-
-    public void ChangeHand(string nextAction)
+    /// <summary>
+    /// アクションに対応するメッセージセットを返す
+    /// </summary>
+    /// <param name="nextAction">次のアクショ</param>
+    /// <return>メッセージセット</param>
+    string[] GetActionComment(string nextAction)
     {
+        string[] comments;
         switch (nextAction)
         {
             case "eat":
-                resolver.SetCategoryAndLabel("Hand", "eat");
-                Debug.Log(resolver.GetLabel());
+                comments = EATMESSAGES;
+                break;
+            case "bath":
+                comments = BATHMESSAGES;
+                break;
+            case "clean":
+                comments = CLEANMESSAGES;
+                break;
+            case "wash":
+                comments = WASHMESSAGES;
+                break;
+            case "exercise":
+                comments = EXERCISEMESSAGES;
+                break;
+            case "study":
+                comments = STUDYMESSAGES;
+                break;
+            case "play":
+                comments = PLAYMESSAGES;
                 break;
             default:
-                resolver.SetCategoryAndLabel("Hand", "nomal");
+                comments = NOMALMESSAGES;
                 break;
         }
+        return comments;
     }
 
+    /// <summary>
+    /// アクションに応じてアニメーションを変化させる
+    /// </summary>
     public void ChangeAnimation(string nextAction)
     {
         switch (nextAction)

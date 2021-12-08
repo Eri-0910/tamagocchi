@@ -1,7 +1,7 @@
 public class SceneNames
 {
-    public static string LAUNCH_SCENE = "FirstScene";
-    public static string NAME_SCENE = "TitleScene";
-    public static string MAIN_SCENE = "SampleScene";
-    public static string OSEWA_SCENE = "OsewaListScene";
+    public static string LAUNCH_SCENE = "Title";
+    public static string NAME_SCENE = "Name";
+    public static string MAIN_SCENE = "Main";
+    public static string OSEWA_SCENE = "OsewaList";
 }

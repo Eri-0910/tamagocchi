@@ -67,6 +67,20 @@ public class OsewaItem
     }
 
     /// <summary>
+    /// 前の期間内にお世話を行った回数をチェックする
+    /// </summary>
+    /// <returns>回数</returns>
+    public int getDoneBeforeTimes()
+    {
+        // これ以上不要なデータを消しておく
+        this.checkedTimes.RemoveAll(IsNeedless);
+        // 前の期間内に何回行ったかをチェック
+        int times = this.checkedTimes.FindAll(IsBeforeimeDone).Count;
+        // 返す
+        return times;
+    }
+
+    /// <summary>
     /// 不要な完了データかどうかをチェックする
     /// </summary>
     /// <returns>不要である</returns>
@@ -102,6 +116,28 @@ public class OsewaItem
             case Span.Month:
                 // 完了日が 1月前より最近
                 return DateTime.Today.AddMonths(-1).Date <= Utils.StringToDateTime(d).Date;
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>
+    /// 前の期間内での完了かどうか
+    /// </summary>
+    /// <returns>前の期間での完了である</returns>
+    private bool IsBeforeimeDone(string d)
+    {
+        switch(this.span)
+        {
+            case Span.Day:
+                // 完了日が昨日
+                return  DateTime.Today.AddDays(-1).Date == Utils.StringToDateTime(d).Date;
+            case Span.Week:
+                // 完了日が7日前から14日前
+                return  DateTime.Today.AddDays(-14).Date <= Utils.StringToDateTime(d).Date && Utils.StringToDateTime(d).Date < DateTime.Today.AddDays(-7).Date;
+            case Span.Month:
+                // 完了日が 1月前から2ヶ月前
+                return DateTime.Today.AddMonths(-2).Date <= Utils.StringToDateTime(d).Date && Utils.StringToDateTime(d).Date < DateTime.Today.AddMonths(-1).Date;
             default:
                 return false;
         }

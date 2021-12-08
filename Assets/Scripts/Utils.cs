@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using System.Globalization;
 
-public class Utils : MonoBehaviour
+public class Utils
 {
-    // Start is called before the first frame update
-    void Start()
+    public static DateTime StringToDateTime(string dateString)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return DateTime.ParseExact(dateString, "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
     }
 }

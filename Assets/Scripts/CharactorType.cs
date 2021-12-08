@@ -8,6 +8,13 @@ public class CharactorType
         this.id = (CharactorTypeId) id;
         this.name = CharactorTypeIdToString(this.id);
     }
+
+    public CharactorType(string name)
+    {
+        this.id = StringToCharactorTypeId(name);
+        this.name = CharactorTypeIdToString(this.id);
+    }
+
     public enum CharactorTypeId
     {
         normal = 0,
@@ -46,6 +53,29 @@ public class CharactorType
             default:
                 return "normal";
         }
+    }
+
+    /// <summary>
+    /// 指定されたキャラクターの次に変身するキャラクターを取得
+    /// </summary>
+    public CharactorTypeId Next(CharactorTypeId id){
+        //FIXME: 他のキャラも完成したらここに追加する
+        switch (id)
+        {
+            case CharactorTypeId.normal:
+                return CharactorTypeId.cto;
+            case CharactorTypeId.cto:
+                return CharactorTypeId.normal;
+            default:
+                return CharactorTypeId.normal;
+        }
+    }
+
+    /// <summary>
+    /// 今のキャラクターの次に変身するキャラクターを取得
+    /// </summary>
+    public CharactorTypeId Next(){
+        return this.Next(this.id);
     }
 
 }

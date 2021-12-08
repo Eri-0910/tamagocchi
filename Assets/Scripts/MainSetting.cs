@@ -99,12 +99,10 @@ public class MainSetting : MonoBehaviour
     /// </summary>
     void SetCharactorType()
     {
-        var charactorType = PlayerPrefs.GetString("CharactorType");
+        int charactorTypeId = PlayerPrefs.GetInt("CharactorType");
+        CharactorType charactorType = new CharactorType(charactorTypeId);
 
-        if (charactorType != "normal")
-        {
-            GameObject.Find("switchcatbutton").GetComponent<CatChange>().change();
-        }
+        GameObject.Find("switchcatbutton").GetComponent<CatChange>().changeById(charactorType.id);
     }
 
     /// <summary>

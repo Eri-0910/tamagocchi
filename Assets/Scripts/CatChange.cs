@@ -14,27 +14,46 @@ public class CatChange : MonoBehaviour
 
     public void change()
     {
-        switch (bodyResolver.GetLabel())
+        // 今のキャラクターを取得
+        int charactorTypeInt = PlayerPrefs.GetInt("CharactorType", 0);
+        CharactorType charactorType = new CharactorType(charactorTypeInt);
+
+        // 次に変身するキャラクターIDを取得
+        CharactorType.CharactorTypeId next = charactorType.Next();
+
+        // 変身
+        changeById(next);
+    }
+
+    public void changeById(CharactorType.CharactorTypeId id)
+    {
+
+        switch (id)
         {
-            // FIXME: 各変身をそれぞれ関数化、タイプ名で変身できるようにする
-            case "ctocat":
-                // 変身
+            case CharactorType.CharactorTypeId.normal:
+                // ノーマルに変身
                 bodyResolver.SetCategoryAndLabel("Body", "normal");
                 leftHand.enabled = true;
                 rightHand.enabled = true;
                 face.enabled = true;
-                // 変身状態設定
-                PlayerPrefs.SetString("CharactorType", "normal");
                 break;
-            default:
+            case CharactorType.CharactorTypeId.cto:
                 // 変身
                 bodyResolver.SetCategoryAndLabel("Body", "ctocat");
                 leftHand.enabled = false;
                 rightHand.enabled = false;
                 face.enabled = false;
-                // 変身状態設定
-                PlayerPrefs.SetString("CharactorType", "ctocat");
+                break;
+            default:
+                // ノーマルに変身
+                bodyResolver.SetCategoryAndLabel("Body", "normal");
+                leftHand.enabled = true;
+                rightHand.enabled = true;
+                face.enabled = true;
                 break;
         }
+
+        // 変身状態保存
+        PlayerPrefs.SetInt("CharactorType", (int)id);
     }
 }

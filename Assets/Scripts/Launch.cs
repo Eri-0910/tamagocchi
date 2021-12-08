@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SceneNames;
 
 public class Launch : MonoBehaviour
 {
@@ -24,11 +25,11 @@ public class Launch : MonoBehaviour
         if (Name == null)
         {
             // 遷移
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene(NAME_SCENE);
         } else
         {
             // 遷移
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(MAIN_SCENE);
         }
     }
 }

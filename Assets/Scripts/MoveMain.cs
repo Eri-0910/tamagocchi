@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static SceneNames;
 
 public class MoveMain : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MoveMain : MonoBehaviour
         // 入力の保存
         PlayerPrefs.SetString("Name", inputField.text);
         // 遷移
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(MAIN_SCENE);
     }
 
 }

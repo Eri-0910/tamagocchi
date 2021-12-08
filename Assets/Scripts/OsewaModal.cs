@@ -32,7 +32,7 @@ public class OsewaModal : MonoBehaviour
 
         this.title.text = osewaItem.title;
         this.memo.text = osewaItem.memo;
-        this.times.text = osewaItem.getDone() + "/" + osewaItem.needTime.ToString();
+        this.times.text = osewaItem.getDoneTimes() + "/" + osewaItem.needTime.ToString();
 
         switch (osewaItem.span)
             {

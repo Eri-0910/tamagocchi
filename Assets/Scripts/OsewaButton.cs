@@ -31,17 +31,17 @@ public class OsewaButton : MonoBehaviour
         this.parent = parent;
         this.title.text = osewaItem.title;
         this.memo.text = osewaItem.memo;
-        this.times.text = osewaItem.getDone() + "/" + osewaItem.needTime.ToString();
+        this.times.text = osewaItem.getDoneTimes() + "/" + osewaItem.needTime.ToString();
 
         // やった回数が必要回数以上なら、背景を完了用に変える
-        if(osewaItem.getDone() >= osewaItem.needTime){
+        if(osewaItem.getDoneTimes() >= osewaItem.needTime){
             var sprite = Resources.Load<Sprite>("TaskItems/completed_task");
             baseImage.sprite = sprite;
         }
         // やった回数が必要回数以上なら、チェックマークをつける
-        check.enabled = osewaItem.getDone() >= osewaItem.needTime;
+        check.enabled = osewaItem.getDoneTimes() >= osewaItem.needTime;
 
-        var status = osewaItem.getDone() >= osewaItem.needTime ? "working" : "completed";
+        var status = osewaItem.getDoneTimes() >= osewaItem.needTime ? "working" : "completed";
         var spanSprite = Resources.Load<Sprite>(getSpanImagePath(status, osewaItem.span));
         spanImage.sprite = spanSprite;
     }

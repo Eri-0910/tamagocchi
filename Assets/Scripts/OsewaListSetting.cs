@@ -19,8 +19,8 @@ public class OsewaListSetting : MonoBehaviour
     // [SerializeField] OsewaItems osewaItemsBase = new OsewaItems(
     //     new List<OsewaItem>() {
     //         new OsewaItem(0, "eat", "朝ごはんを食べる", "", 1, Span.Day, new List<DateTime>()  {
-    //             new DateTime(2021, 7, 21, 7, 47, 0),
-    //             new DateTime(2021, 7, 25, 7, 47, 0)}),
+    //             new DateTime(2021, 11, 21, 7, 47, 0),
+    //             new DateTime(2021, 12, 2, 7, 47, 0)}),
     //         new OsewaItem(1, "eat", "昼ごはんを食べる", "大学の食堂で食べる", 1, Span.Day,  new List<DateTime>()  {
     //             new DateTime(2021, 7, 24, 12, 47, 0),
     //             new DateTime(2021, 7, 25, 12, 47, 0)}),
@@ -59,11 +59,11 @@ public class OsewaListSetting : MonoBehaviour
     //             new DateTime(2021, 7, 25, 7, 47, 0)})},
     //     new List<OsewaItem>() {
     //         new OsewaItem(0, "study", "TOEIC対策", "a", 5, Span.Month,  new List<DateTime>()  {
-    //             new DateTime(2021, 7, 16, 7, 47, 0)})},
+    //             new DateTime(2021, 11, 16, 7, 47, 0)})},
     //     new List<OsewaItem>() {
     //         new OsewaItem(0, "play", "アニメをみる", "a", 3, Span.Month,  new List<DateTime>()  {
-    //             new DateTime(2021, 6, 28, 7, 47, 0),
-    //             new DateTime(2021, 7, 10, 7, 47, 0)})}
+    //             new DateTime(2021, 11, 28, 7, 47, 0),
+    //             new DateTime(2021, 11, 10, 7, 47, 0)})}
     // );
 
     // Start is called before the first frame update
@@ -98,7 +98,7 @@ public class OsewaListSetting : MonoBehaviour
             var _osewaButton = Instantiate(osewaButton);
             _osewaButton.Set(osewaItem, modalparent);
             _osewaButton.transform.SetParent(_categoryList.buttonArea.transform, false);
-            if(osewaItem.getDone() < osewaItem.needTime){
+            if(osewaItem.getDoneTimes() < osewaItem.needTime){
                 notFinished = true;
             }
         }

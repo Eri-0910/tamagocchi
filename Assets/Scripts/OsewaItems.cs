@@ -52,11 +52,17 @@ public class OsewaItem
         this.span = span;
     }
 
-    public int getDone()
+    /// <summary>
+    /// 期間内にお世話を行った回数をチェックする
+    /// </summary>
+    /// <returns>回数</returns>
+    public int getDoneTimes()
     {
-        var times = 5;
+        // これ以上不要なデータを消しておく
         this.checkedTimes.RemoveAll(IsNeedless);
-        times = this.checkedTimes.FindAll(IsThisTimeDone).Count;
+        // 期間内に何回行ったかをチェック
+        int times = this.checkedTimes.FindAll(IsThisTimeDone).Count;
+        // 返す
         return times;
     }
 

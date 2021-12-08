@@ -22,6 +22,9 @@ public class MoveMain : MonoBehaviour
         PlayerPrefs.SetString("Name", inputField.text);
         // 年齢の追加
         PlayerPrefs.SetString("BirthDay", DateTime.Today.Date.ToString());
+        // 世代の設定
+        int generation = PlayerPrefs.GetInt("Generation", 0);
+        PlayerPrefs.SetInt("Generation", generation+1);
         // 遷移
         SceneManager.LoadScene(MAIN_SCENE);
     }

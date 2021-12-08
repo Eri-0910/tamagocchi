@@ -27,6 +27,8 @@ public class MainSetting : MonoBehaviour
     Animator animator;
     [SerializeField]
     Text age;
+    [SerializeField]
+    Text generationTextArea;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,11 @@ public class MainSetting : MonoBehaviour
         TimeSpan liveDate = today - birthDay;
 
         age.text = Math.Floor(liveDate.Days/3.0).ToString() + "歳";
+
+        // 世代
+        int generation = PlayerPrefs.GetInt("Generation", 1);
+        Debug.Log(PlayerPrefs.GetInt("Generation"));
+        generationTextArea.text = "第" + generation.ToString() + "世代";
 
         // アクション
         Debug.Log(nextAction);

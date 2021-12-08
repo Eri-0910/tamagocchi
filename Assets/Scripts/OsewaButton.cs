@@ -39,9 +39,9 @@ public class OsewaButton : MonoBehaviour
             baseImage.sprite = sprite;
         }
         // やった回数が必要回数以上なら、チェックマークをつける
-        check.enabled = osewaItem.getDoneTimes() >= osewaItem.needTime;
+        check.enabled = osewaItem.IsClear();
 
-        var status = osewaItem.getDoneTimes() >= osewaItem.needTime ? "working" : "completed";
+        var status = osewaItem.IsClear() ? "working" : "completed";
         var spanSprite = Resources.Load<Sprite>(getSpanImagePath(status, osewaItem.span));
         spanImage.sprite = spanSprite;
     }

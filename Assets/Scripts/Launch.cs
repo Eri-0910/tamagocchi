@@ -9,20 +9,15 @@ public class Launch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // 不要なステータスの削除？
     }
 
     public void onClickStartButton(){
         // 名前の取得
-        string Name = PlayerPrefs.GetString("Name");
+        string name = PlayerPrefs.GetString("Name");
 
-        if (Name == null)
+        // キャラクターが存在するかどうか(=初回起動かどうか)で、どう遷移するか変える
+        if (name == null)
         {
             // 遷移
             SceneManager.LoadScene(NAME_SCENE);

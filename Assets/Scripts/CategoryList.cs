@@ -11,16 +11,4 @@ public class CategoryList : MonoBehaviour
     [SerializeField] public Image warning = default;
     // ボタンエリア
     [SerializeField] public GameObject buttonArea = default;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

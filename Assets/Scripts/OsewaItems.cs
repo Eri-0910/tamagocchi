@@ -52,21 +52,40 @@ public class OsewaItem
         this.span = span;
     }
 
+    /// <summary>
+    /// 期間内にクリアしたか
+    /// </summary>
+    /// <returns>期間内にクリアした</returns>
     public boolean IsClear()
     {
         return getDoneTimes() >= this.needTime;
     }
 
+
+    /// <summary>
+    /// 前の期間内にクリアしたか
+    /// </summary>
+    /// <returns>前の期間内にクリアした</returns>
     public boolean IsClearBefore()
     {
         return getDoneBeforeTimes() >= this.needTime;
     }
 
+
+    /// <summary>
+    /// 期間内にやりすぎているか
+    /// </summary>
+    /// <returns>期間内にやりすぎている</returns>
     public boolean IsOver()
     {
         return getDoneTimes() > this.needTime;
     }
 
+
+    /// <summary>
+    /// 前の期間内にやりすぎたか
+    /// </summary>
+    /// <returns>期間内にやりすぎた</returns>
     public boolean IsOverBefore()
     {
         return getDoneBeforeTimes() > this.needTime;

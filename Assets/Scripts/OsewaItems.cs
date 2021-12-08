@@ -27,6 +27,10 @@ public class OsewaItems
         this.study = study.ToList();
         this.play = play.ToList();
     }
+
+    public List<List<OsewaItem>> OsewaItemsToList(){
+        return new List<List<OsewaItem>> {eat, bath, clean, wash, exercise, study, play};
+    }
 }
 
 [Serializable]
@@ -56,7 +60,7 @@ public class OsewaItem
     /// 期間内にクリアしたか
     /// </summary>
     /// <returns>期間内にクリアした</returns>
-    public boolean IsClear()
+    public bool IsClear()
     {
         return getDoneTimes() >= this.needTime;
     }
@@ -66,7 +70,7 @@ public class OsewaItem
     /// 前の期間内にクリアしたか
     /// </summary>
     /// <returns>前の期間内にクリアした</returns>
-    public boolean IsClearBefore()
+    public bool IsClearBefore()
     {
         return getDoneBeforeTimes() >= this.needTime;
     }
@@ -76,7 +80,7 @@ public class OsewaItem
     /// 期間内にやりすぎているか
     /// </summary>
     /// <returns>期間内にやりすぎている</returns>
-    public boolean IsOver()
+    public bool IsOver()
     {
         return getDoneTimes() > this.needTime;
     }
@@ -86,7 +90,7 @@ public class OsewaItem
     /// 前の期間内にやりすぎたか
     /// </summary>
     /// <returns>期間内にやりすぎた</returns>
-    public boolean IsOverBefore()
+    public bool IsOverBefore()
     {
         return getDoneBeforeTimes() > this.needTime;
     }

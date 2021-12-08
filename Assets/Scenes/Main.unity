@@ -1534,7 +1534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.2, y: 596.7}
+  m_AnchoredPosition: {x: -68.2, y: 596.69995}
   m_SizeDelta: {x: 234.6652, y: 43.9998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902895485
@@ -2384,6 +2384,7 @@ MonoBehaviour:
   text: {fileID: 1185120096}
   resolver: {fileID: 593782522}
   animator: {fileID: 911909295}
+  age: {fileID: 902895485}
 --- !u!1 &1471014948
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -23,10 +25,21 @@ public class MainSetting : MonoBehaviour
     SpriteResolver resolver;
     [SerializeField]
     Animator animator;
+    [SerializeField]
+    Text age;
 
     // Start is called before the first frame update
     void Start()
     {
+        // 年齢
+        DateTime birthDay =  DateTime.ParseExact(PlayerPrefs.GetString("BirthDay"), "M/d/yyyy h:m:s tt", new CultureInfo("en-US")).Date;
+        DateTime today = DateTime.Today.Date;
+
+        TimeSpan liveDate = today - birthDay;
+
+        age.text = Math.Floor(liveDate.Days/3.0).ToString() + "歳";
+
+        // アクション
         Debug.Log(nextAction);
         switch (nextAction)
         {
@@ -57,6 +70,8 @@ public class MainSetting : MonoBehaviour
         }
 
         ChangeAnimation(nextAction);
+
+        // ctoに変化するなどのキャラ変設定
         SetCharactorType();
 
         nextAction = "";
@@ -83,7 +98,7 @@ public class MainSetting : MonoBehaviour
     public void RandomCommentSetting(string[] messages)
     {
         //ランダムなコメントセット
-        string comment = messages.GetValue(Random.Range(0, messages.Length)) as string;
+        string comment = messages.GetValue(UnityEngine.Random.Range(0, messages.Length)) as string;
         text.text = comment;
     }
 

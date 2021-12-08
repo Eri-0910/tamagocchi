@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class MoveMain : MonoBehaviour
         Debug.Log (inputField.text);
         // 入力の保存
         PlayerPrefs.SetString("Name", inputField.text);
+        // 年齢の追加
+        PlayerPrefs.SetString("BirthDay", DateTime.Today.Date.ToString());
         // 遷移
         SceneManager.LoadScene(MAIN_SCENE);
     }

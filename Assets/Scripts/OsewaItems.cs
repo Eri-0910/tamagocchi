@@ -60,14 +60,45 @@ public class OsewaItem
         return times;
     }
 
-    private static bool IsNeedless(string d)
+    /// <summary>
+    /// 不要な完了データかどうかをチェックする
+    /// </summary>
+    /// <returns>不要である</returns>
+    private bool IsNeedless(string d)
     {
-        return Utils.StringToDateTime(d) < DateTime.Today.AddDays(-2).Date;
+        switch(this.span)
+        {
+            case Span.Day:
+                return Utils.StringToDateTime(d) < DateTime.Today.AddDays(-2).Date;
+            case Span.Week:
+                return Utils.StringToDateTime(d) < DateTime.Today.AddDays(-14).Date;
+            case Span.Month:
+                return Utils.StringToDateTime(d) < DateTime.Today.AddMonths(-2).Date;
+            default:
+                return false;
+        }
     }
 
-    private static bool IsThisTimeDone(string d)
+    /// <summary>
+    /// この期間内での完了かどうか
+    /// </summary>
+    /// <returns>この期間での完了である</returns>
+    private bool IsThisTimeDone(string d)
     {
-        return  DateTime.Today.Date == Utils.StringToDateTime(d);
+        switch(this.span)
+        {
+            case Span.Day:
+                // 完了日が今日
+                return  DateTime.Today.Date == Utils.StringToDateTime(d).Date ;
+            case Span.Week:
+                // 完了日が7日前より最近
+                return  DateTime.Today.AddDays(-7).Date <= Utils.StringToDateTime(d).Date ;
+            case Span.Month:
+                // 完了日が 1月前より最近
+                return DateTime.Today.AddMonths(-1).Date <= Utils.StringToDateTime(d).Date ;
+            default:
+                return false;
+        }
     }
 }
 
